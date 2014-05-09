@@ -18,7 +18,7 @@
 #ifndef C16_OPERATIONS_H
 #define C16_OPERATIONS_H
 
-#include "../common/arch.h"
+#include "../16common/common/arch.h"
 #include "processor.h"
 #include "memory.h"
 
