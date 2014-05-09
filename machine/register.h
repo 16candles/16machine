@@ -18,6 +18,8 @@
 #ifndef C16_REGISTER_H
 #define C16_REGISTER_H
 
+#include "../16common/common/arch.h"
+
 // Reserved Registers:
 extern c16_reg    ipt;   // Instruction pointer.
 extern c16_reg    spt;   // Stack pointer.
