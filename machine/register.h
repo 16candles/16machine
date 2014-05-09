@@ -18,7 +18,7 @@
 #ifndef C16_REGISTER_H
 #define C16_REGISTER_H
 
-#include "../common/arch.h"
+#include "../16common/common/arch.h"
 
 // Reserved Registers:
 extern c16_reg ipt;      // Instruction pointer.
