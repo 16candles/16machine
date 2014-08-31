@@ -305,25 +305,19 @@ void op_push(c16_opcode op){
 }
 
 void op_jmp(c16_opcode op){
+    fill_word(ac1);
     switch(op){
     case OP_JMP:
-        *ipt =  (c16_word) sysmem.mem[(*ipt)++] << 8;
-        *ipt += sysmem.mem[(*ipt)++];
+        *ipt = *ac1;
         return;
     case OP_JMPT:
         if (*tst){
-            *ipt =  (c16_word) sysmem.mem[(*ipt)++] << 8;
-            *ipt += sysmem.mem[(*ipt)++];
-        }else{
-            *ipt += 2;
+            *ipt = *ac1;
         }
         return;
     case OP_JMPF:
         if (!*tst){
-            *ipt =  (c16_word) sysmem.mem[(*ipt)++] << 8;
-            *ipt += sysmem.mem[(*ipt)++];
-        }else{
-            *ipt += 2;
+            *ipt = *ac1;
         }
     }
 }
