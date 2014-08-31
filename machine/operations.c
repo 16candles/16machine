@@ -354,8 +354,8 @@ void op_mset(c16_opcode op){
     c16_halfword reg1,reg2;
     c16_reg temp_reg,temp_reg2;
     c16_subreg temp_subreg;
-    switch(op % 3){
-    case 0: // LIT_MEMREG:
+    switch(op){
+    case OP_MSET_LIT_MEMREG:
         fill_word(ac1);
         reg1 = sysmem.mem[(*ipt)++];
         if (reg1 > OP_r9){
@@ -368,7 +368,7 @@ void op_mset(c16_opcode op){
         sysmem.mem[*temp_reg] = *ac1 >> 8;
         sysmem.mem[*temp_reg + 1] = (c16_halfword) *ac1;
         return;
-    case 1: // REG_MEMREG:
+    case OP_MSET_REG_MEMREG:
         reg1 = sysmem.mem[(*ipt)++];
         reg2 = sysmem.mem[(*ipt)++];
         if (reg1 > OP_r9){
@@ -392,7 +392,7 @@ void op_mset(c16_opcode op){
             sysmem.mem[*temp_reg2 + 1] = (c16_halfword) *temp_reg;
         }
         return;
-    case 2: // MEMADDR:
+    case OP_MSET_MEMADDR:
         fill_word(ac1);
         reg1 = sysmem.mem[(*ipt)++];
         if (reg1 > OP_r9){
@@ -403,7 +403,7 @@ void op_mset(c16_opcode op){
         *temp_reg = (c16_word) sysmem.mem[*ac1] << 8;
         *temp_reg += sysmem.mem[*ac1 + 1];
         return;
-    case 3: // MEMREG:
+    case OP_MSET_MEMREG:
         reg1 = sysmem.mem[(*ipt)++];
         reg2 = sysmem.mem[(*ipt)++];
         if (reg1 > OP_r9){
@@ -426,13 +426,13 @@ void op_mset(c16_opcode op){
             *temp_reg2 += sysmem.mem[*temp_reg + 1];
         }
         return;
-    case 4: // LIT_MEMADDR:
+    case OP_MSET_LIT_MEMADDR:
         fill_word(ac1);
         fill_word(ac2);
         sysmem.mem[*ac2] = *ac1 << 8;
         sysmem.mem[*ac2 + 1] = (c16_halfword) *ac1;
         return;
-    case 5: // REG_MEMADDR:
+    case OP_MSET_REG_MEMADDR:
         reg1 = sysmem.mem[(*ipt)++];
         fill_word(ac1);
         if (reg1 > OP_r9){
